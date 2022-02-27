@@ -1,9 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'jacoco'
+    id 'jacoco' // TODO: STEP 1
 }
 
+// TODO: STEP 2
 jacoco {
     toolVersion = "0.8.7"
 }
@@ -24,7 +25,7 @@ android {
 
     buildTypes {
         debug {
-            testCoverageEnabled true
+            testCoverageEnabled true // TODO: STEP 3
         }
         release {
             minifyEnabled false
@@ -38,6 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // TODO: STEP 4
     testOptions {
         unitTests.includeAndroidResources = true
         unitTests.all {
@@ -49,6 +51,7 @@ android {
     }
 }
 
+// TODO: STEP 5
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
 
     reports {
@@ -100,8 +103,10 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
                       '**/*$Result$*.*']
 
     def debugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug", excludes: fileFilter)
-    def mainSrc = fileTree(dir: "${projectDir}/src/main/java", excludes: fileFilter)
+    //def mainSrc = fileTree(dir: "${projectDir}/src/main/java", excludes: fileFilter)
+    def mainSrc = "${projectDir}/src/main/java"
 
+    println(mainSrc)
     getSourceDirectories().setFrom(files([mainSrc]))
     getClassDirectories().setFrom(files([debugTree]))
 
