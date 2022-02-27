@@ -4,8 +4,7 @@ plugins {
     id 'jacoco' // TODO: STEP 1
 }
 
-// TODO: STEP 2
-jacoco {
+jacoco { // TODO: STEP 2
     toolVersion = "0.8.7"
 }
 
@@ -39,8 +38,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    // TODO: STEP 4
-    testOptions {
+
+    testOptions { // TODO: STEP 4
         unitTests.includeAndroidResources = true
         unitTests.all {
             reports {
@@ -51,8 +50,7 @@ android {
     }
 }
 
-// TODO: STEP 5
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) { // TODO: STEP 5
 
     reports {
         xml.enabled = true
